@@ -3,15 +3,19 @@ import {connect} from 'react-redux'
 
 class CartSummary extends Component {
   render() {
-    const products = this.props.products.filter(p => {
-      return this.props.cart.includes(p.get('id'))
+    const items = this.props.cart.map((item, index) => {
+      return this.props.products.filter(product => {
+        if (product.toJS().id === item) {
+          return product.toJS()
+        }
+      })
     })
     return (
       <div id='cart'>
         <h4>Shopping Cart</h4>
         <div className='products'>
-          {products.map((product, idx) => {
-            return <div key={idx}>{product.get('name')}</div>
+          {items.map((item, index) => {
+            return <div key={index}>{item.toJS()[0].name}</div>
           })}
         </div>
       </div>
