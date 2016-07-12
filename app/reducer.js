@@ -13,7 +13,6 @@ const INITIAL_STATE = fromJS({
 
 const finder = function (state, action) {
   const cart = state.toJS().cart
-
   return cart.indexOf(action.id)
 }
 
