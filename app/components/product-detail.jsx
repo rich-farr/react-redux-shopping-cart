@@ -12,10 +12,14 @@ class ProductDetail extends Component {
     const addToCart = (event) => {
       this.props.addToCart(id)
     }
+    const removeFromCart = (event) => {
+      this.props.removeFromCart(id)
+    }
     return (
       <div className='product' id={id}>
         <div> Product: {name}; price: ${price}</div>
         <div><button onClick={addToCart}>Add to Cart</button></div>
+        <div><button onClick={removeFromCart}>Remove From Cart</button></div>
         <div><Link to='/'>View all</Link></div>
       </div>
     )
@@ -33,6 +37,12 @@ function mapDispatchToProps(dispatch) {
     addToCart: (id) => {
       dispatch({
         type: 'ADD_PRODUCT_TO_CART',
+        id: parseInt(id)
+      })
+    },
+    removeFromCart: (id) => {
+      dispatch({
+        type: 'REMOVE_PRODUCT_FROM_CART',
         id: parseInt(id)
       })
     }

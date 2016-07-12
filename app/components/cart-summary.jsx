@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 
 class CartSummary extends Component {
   render() {
+    console.log("This is the cart before:", this.props.cart.toJS())
     const items = this.props.cart.map((item, index) => {
       return this.props.products.filter(product => {
         if (product.toJS().id === item) {
